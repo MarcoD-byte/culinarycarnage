@@ -17,16 +17,22 @@ Teens to twenties
 Progress through the world engaging in combat with enemies, with the final goal of defeating a boss at the end
 
 ### What could each team member contribute or help investigate?
+
 Marco - coding
 Jonah - Game design and coding
 Sarah - Art, some coding
 Franklin - Coding, sounds
 
-Generate at least three small game possibilities
- 2d platformer 
+### Generate at least three small game possibilities
+
+2D platformer 
+
 2D top- down action and adventure
+
 Top down isometric action-adventure
-Record your group’s idea seed
+
+### Record your group’s idea seed
+
 Culinary Carnage
 
 Marco, Jonah, Franklin, Sarah
