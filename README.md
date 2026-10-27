@@ -6,7 +6,7 @@
 
    Game Idea Lab
 
-###Who might play this game?
+### Who might play this game?
 
 PC owners
 
