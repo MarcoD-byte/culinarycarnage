@@ -1,5 +1,5 @@
-# Gamedev1-Group_Project
+# Game Development 1: Group Project
 
   ![title](URL)
-// may be a copycat of another game
   
+  [alt tag](URL)
