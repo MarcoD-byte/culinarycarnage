@@ -51,7 +51,11 @@ Room transition
 
 ### Team contribution
   Marco - low level coding
+  
   Jonah - Game design and coding
+  
   Sarah - Art, some coding
+  
   Franklin - Coding, sounds
+  
 
