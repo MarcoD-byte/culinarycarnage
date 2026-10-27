@@ -6,14 +6,17 @@
 
    Game Idea Lab
 
-Shared direction
-Who might play this game?
+###Who might play this game?
+
 PC owners
+
 Teens to twenties
 
-What would the player try to do?
+### What would the player try to do?
+
 Progress through the world engaging in combat with enemies, with the final goal of defeating a boss at the end
-What could each team member contribute or help investigate?
+
+### What could each team member contribute or help investigate?
 Marco - coding
 Jonah - Game design and coding
 Sarah - Art, some coding
