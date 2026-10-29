@@ -3,8 +3,6 @@
 int level;
 Enemy e1;
 Chef player1;
-PImage carrot;
-PImage onion; 
 
 void setup(){
   background(220);
