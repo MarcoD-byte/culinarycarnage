@@ -11,7 +11,7 @@ void setup(){
   size(500,500);
   e1 = new Enemy(100,100);
   e1.display();
-  level = 1;
+  level = 0;
   player1 = new Chef();
 }
 
