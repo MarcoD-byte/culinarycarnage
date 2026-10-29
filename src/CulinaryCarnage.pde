@@ -1,17 +1,25 @@
-Chef player;
+// title here
 
+int level;
+Enemy e1;
+Chef player;
 
 void setup(){
   background(220);
   size(500,500);
-  level = 0;
-  player = new Chef(width/2, height/2);
+  e1 = new Enemy(100,100);
+  e1.display();
+  level = 1;
+  player = new Chef(100,100);
 }
 
 
 void draw() {
+  background(255);
+  e1.display();
   player.display();
   player.update();
+  e1.move();
 }
 
 void keyPressed() {
