@@ -10,7 +10,7 @@ void setup(){
   e1 = new Enemy(100,100);
   e1.display();
   level = 1;
-  player1 = new Player(250,250);
+  player1 = new Chef();
 }
 
 
