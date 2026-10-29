@@ -9,8 +9,8 @@ class Enemy {
     speed = 2;
     size = 50;
     c1 = (0);
-    enemyCarrot = loadImage("carrotpngfilehereDONTFORGET");
-    enemyOnion = loadImage("onionpngfilehereDONTFORGET");
+    enemyCarrot = loadImage("carrot.png");
+    enemyOnion = loadImage("onion.png");
   }
 
   void display() {
