@@ -1,5 +1,6 @@
 // title here
 
+int level;
 Enemy e1;
 
 void setup(){
@@ -7,6 +8,7 @@ void setup(){
   size(500,500);
   e1 = new Enemy(100,100);
   e1.display();
+  level = 'a';
 }
 
 
