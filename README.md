@@ -5,7 +5,7 @@
 this image shows the gameplay from the oirginal Legend of Zelda, and matches the style of gameplay we will be trying... a top-down game with a side-view of the character
 
   
-  [alt tag](URL)
+  [You can find the source code here](https://github.com/MarcoD-byte/culinarycarnage/tree/main/src)
 
    Game Idea Lab
 
