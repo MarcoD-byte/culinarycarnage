@@ -12,7 +12,6 @@ void setup(){
 
 
 void draw() {
-  Level.level(level);
   e1.display();
   e1.move();
 }
