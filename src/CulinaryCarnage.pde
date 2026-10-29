@@ -1,8 +1,5 @@
-// title here
-
-int level;
-Enemy e1;
 Chef player1;
+
 
 void setup(){
   background(220);
@@ -15,7 +12,7 @@ void setup(){
 
 
 void draw() {
-  background(255);
+  Level.level(level);
   e1.display();
   e1.move();
 }
