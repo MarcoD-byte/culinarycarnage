@@ -16,15 +16,15 @@ class Enemy {
   }
 
   void move() {
-    if (abs(p1.x - x)>25) {
-      if (x<p1.x) {
+    if (abs(player.x - x)>25) {
+      if (x<player.x) {
         x +=speed ;
       } else {
         x -= speed;
       }
     }
-    if (abs(p1.y - y)>25) {
-      if (y<p1.y) {
+    if (abs(player1.y - y)>25) {
+      if (y<player1.y) {
         y +=speed ;
       } else {
         y -= speed;
