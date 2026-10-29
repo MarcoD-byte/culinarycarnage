@@ -1,11 +1,11 @@
-Chef player1;
+Chef player;
 
 
 void setup(){
   background(220);
   size(500,500);
   level = 0;
-  player1 = new Chef();
+  player = new Chef(width/2, height/2);
 }
 
 
