@@ -14,4 +14,22 @@ void setup(){
 void draw() {
   e1.display();
   e1.move();
+
+  player.display();
+  player.update();
+}
+
+void keyPressed() {
+  if (key == 'w') player.movingUp = true;
+  if (key == 's') player.movingDown = true;
+  if (key == 'a') player.movingLeft = true;
+  if (key == 'd') player.movingRight = true;
+
+}
+
+void keyReleased() {
+  if (key == 'w') player.movingUp = false;
+  if (key == 's') player.movingDown = false;
+  if (key == 'a') player.movingLeft = false;
+  if (key == 'd') player.movingRight = false;
 }
