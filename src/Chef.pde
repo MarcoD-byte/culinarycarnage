@@ -27,6 +27,7 @@ class Chef {
   }
 
   void display() {
+    imageMode(CENTER);
 
     if (angle == 1) {
       image(front, x, y);
