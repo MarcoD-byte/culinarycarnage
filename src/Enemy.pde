@@ -1,7 +1,7 @@
 class Enemy {
   int x, y, speed, size;
   color c1;
-  PImage enemyCarrot, enemyOnion;
+  PImage enemyImage;
 
   Enemy(int x, int y) {
     this.x = x;
@@ -9,16 +9,19 @@ class Enemy {
     speed = 2;
     size = 50;
     c1 = (0);
-    enemyCarrot = loadImage("carrot.png");
-    enemyOnion = loadImage("onion.png");
+    if (random(2)>1) {
+      enemyImage = loadImage("carrot.png");
+    } else {
+      enemyImage = loadImage("onion.png");
+    }
   }
 
   void display() {
-    ellipseMode(CENTER);
-    fill(c1);
-    ellipse(x, y, 50, 50);
-    //enemyCarrot.resize(size,size);
-    //image (enemyCarrot, x, y)
+    //ellipseMode(CENTER);
+    //fill(c1);
+    //ellipse(x, y, 50, 50);
+    enemyImage.resize(size,size);
+    image (enemyImage, x, y);
   }
 
   void move() {
