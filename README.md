@@ -1,6 +1,9 @@
 # Game Development 1: Group Project
 
-  ![title](URL)
+  ![Kind of the vibe we're going for](https://github.com/MarcoD-byte/culinarycarnage/blob/main/Images/zelda%20gameplay.png)
+
+this image shows the gameplay from the oirginal Legend of Zelda, and matches the style of gameplay we will be trying... a top-down game with a side-view of the character
+
   
   [alt tag](URL)
 
