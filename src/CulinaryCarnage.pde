@@ -2,6 +2,7 @@
 
 int level;
 Enemy e1;
+Chef player1;
 
 void setup(){
   background(220);
@@ -9,6 +10,7 @@ void setup(){
   e1 = new Enemy(100,100);
   e1.display();
   level = 'a';
+  player1 = new Player(250,250);
 }
 
 
