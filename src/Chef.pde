@@ -66,5 +66,7 @@ class Chef {
 
   void melee() {
     println("Melee");
+    attack.loop();
+    image(attack, x, y+25);
   }
 }
