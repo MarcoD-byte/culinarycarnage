@@ -3,23 +3,23 @@
 int level;
 Enemy e1;
 Chef player;
+Level l1;
 
 void setup(){
   background(220);
   size(500,500);
-  e1 = new Enemy(100,100);
-  e1.display();
-  level = 1;
+
+  l1 = new Level();
+  level = 0;
   player = new Chef(100,100);
 }
 
 
 void draw() {
   background(255);
-  e1.display();
-  player.display();
+  l1.level(level);
   player.update();
-  e1.move();
+  player.display();
 }
 
 void keyPressed() {
