@@ -12,12 +12,11 @@ class Level {
     if (level ==0) {
       // Tutorial level
       
-      //replace with image
-      background(244);
+      //replace background with image
+      background(10);
       fill(#E89921);
       textSize(50);
       text("Move with WASD", 100, 100);
-      e1.display();
       e1.display();
       e1.move();
     } else if (level ==1) {
