@@ -7,7 +7,7 @@ this image shows the gameplay from the oirginal Legend of Zelda, and matches the
   
   [You can find the source code here](https://github.com/MarcoD-byte/culinarycarnage/tree/main/src)
 
-  [you can find the Pitch Document here]()
+  [you can find the Pitch Document here](https://docs.google.com/document/d/1x8VxzLZqRytj826WhvkLDy9jhxo5w2pp60E6FmTAC6k/edit?usp=sharing)
 
    Game Idea Lab
 
