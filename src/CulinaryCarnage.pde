@@ -5,6 +5,10 @@ Enemy e1;
 Chef player;
 Level l1;
 
+import gifAnimation.*;
+
+Gif attack;
+
 void setup(){
   background(220);
   size(500,500);
@@ -12,6 +16,8 @@ void setup(){
   l1 = new Level();
   level = 0;
   player = new Chef(100,100);
+
+  attack = new Gif(this, "Melee.gif");
 }
 
 
