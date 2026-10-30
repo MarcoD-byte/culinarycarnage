@@ -8,8 +8,6 @@ class Chef {
   boolean movingDown = false;
   boolean movingRight = false;
   boolean movingLeft = false;
-  boolean notMoving = false;
-  boolean melee = false;
 
   // construct member variables
   Chef(int x, int y) {
@@ -50,26 +48,23 @@ class Chef {
 
     if (movingUp == true) {
       angle = 2;
-      notMoving = false;
       y = y - speed;
     }
     if (movingDown == true) {
       angle = 1;
-      notMoving = false;
       y = y + speed;
     }
     if (movingLeft == true) {
       angle = 3;
-      notMoving = false;
       x = x - speed;
     }
     if (movingRight == true) {
       angle = 4;
-      notMoving = false;
       x = x + speed;
     } 
-    if (movingUp && movingRight && movingDown && movingLeft == false) {
-      notMoving = true;
-    }
+  } 
+
+  void melee() {
+    
   }
 }
