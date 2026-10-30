@@ -1,5 +1,5 @@
 class Level {
-  int level, currentEnemyCount, x1, y1, x2, y2, x3, y3;
+  int level, currentEnemyCount;
   ArrayList<Enemy> enemies = new ArrayList <Enemy>();
   IntList enemyPosition;
   IntList levelEnemyCounts;
@@ -7,8 +7,8 @@ class Level {
 
 
   Level () {
-    levelEnemyCounts = new IntList(1, 2);
-    enemyPosition = new IntList(100, 100, 200, 100, 300, 100);
+    levelEnemyCounts = new IntList(2, 2);
+    enemyPosition = new IntList(500, 0, 200, 200, 1, 1);
   }
 
 
@@ -18,11 +18,11 @@ class Level {
   void level(int level) {
     if (level ==0) {
       // Tutorial level
-      for (int i= 0; currentEnemyCount<=levelEnemyCounts.get(0); i++) {
-        enemies.add(new Enemy(enemyPosition.get(0), enemyPosition.get(0+1)));
+      for (int i= 0; levelEnemyCounts.get(0)>currentEnemyCount; i+=2) {
+        println(i);
+        enemies.add(new Enemy(enemyPosition.get(i), enemyPosition.get(i+1)));
         currentEnemyCount++;
       }
-
       //replace background with image
       background(10);
       fill(#E89921, 95);
@@ -37,7 +37,11 @@ class Level {
         Enemy e = enemies.get(i);
         e.display();
         e.move();
+        println(e.x + " " + e.y);
       }
+      
+      
+      
     } else if (level ==1) {
       // First level
     } else if (level ==2) {
