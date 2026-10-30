@@ -10,7 +10,7 @@ this image shows the gameplay from the oirginal Legend of Zelda, and matches the
   [you can find the Pitch Document here](https://docs.google.com/document/d/1x8VxzLZqRytj826WhvkLDy9jhxo5w2pp60E6FmTAC6k/edit?usp=sharing)
 
 
-  [Class Diagram](https://github.com/MarcoD-byte/culinarycarnage/blob/main/Images/mockupgp.png)
+  ![Class Diagram](https://github.com/MarcoD-byte/culinarycarnage/blob/main/Images/mockupgp.png)
 
    Game Idea Lab
 
