@@ -28,6 +28,9 @@ void keyPressed() {
   if (key == 'a') player.movingLeft = true;
   if (key == 'd') player.movingRight = true;
 
+  if (keyCode == 32) {
+    player.melee();
+  }
 }
 
 void keyReleased() {
