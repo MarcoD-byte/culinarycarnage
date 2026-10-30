@@ -65,6 +65,6 @@ class Chef {
   } 
 
   void melee() {
-    
+    println("Melee");
   }
 }
