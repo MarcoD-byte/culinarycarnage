@@ -62,5 +62,8 @@ Room transition
   Sarah - Art, some coding
   
   Franklin - Coding, sounds
-  
+
+### Current Project Goals:
+  Get collision detection working so that players take damage when they touch an enemy
+  Get a working attack for the player so that they can deal damage to enemie
 
