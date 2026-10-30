@@ -65,5 +65,8 @@ Room transition
 
 ### Current Project Goals:
   Get collision detection working so that players take damage when they touch an enemy
-  Get a working attack for the player so that they can deal damage to enemie
+  
+  Get a working attack for the player so that they can deal damage to enemies
+
+  Get level creationg working so that each level can have a unique set of enemies
 
