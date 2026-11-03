@@ -1,6 +1,8 @@
+// Franklin Roth
+
 class Chef {
   // member variables
-  int x, y, angle, health, meleeDamage, speed, meleeCooldown;
+  int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim;
 
   PImage front, back, left, right;
 
@@ -11,13 +13,14 @@ class Chef {
 
   // construct member variables
   Chef(int x, int y) {
-    x = width/2;
-    y = height/2;
+    x = 50;
+    y = 50;
     angle = 1;
     health = 150;
     meleeDamage = 30;
     speed = 3;
-    meleeCooldown = 25;
+    meleeCooldown = 0;
+    meleeAnim = 25;
     front = loadImage("front-1x.png");
     back = loadImage("back-1x.png");
     left = loadImage("left-1x.png");
@@ -44,7 +47,8 @@ class Chef {
   // Member methods
 
   void update() {
-    
+    meleeAnim -= 1;
+    meleeCooldown -= 1;
 
     if (movingUp == true) {
       angle = 2;
@@ -61,12 +65,15 @@ class Chef {
     if (movingRight == true) {
       angle = 4;
       x = x + speed;
-    } 
-  } 
+    }
+  }
 
   void melee() {
+
     println("Melee");
-    attack.loop();
-    image(attack, x, y+25);
+    meleeCooldown = 100;
+    if (meleeAnim < 1) {
+      meleeAnim = 0;
+    }
   }
 }
