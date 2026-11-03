@@ -1,13 +1,16 @@
 class Enemy {
-  int x, y, size, speed, health, damage;
+  int x, y, size, health, damage;
+  float speed;
   color c1;
   PImage enemyImage;
   char type;
+  
 
-  Enemy(int x, int y) {
+  Enemy(int x, int y, char type) {
     this.x = x;
     this.y = y;
-    if (random(2)>1) {
+    this.type = type;
+    if (type == 'c') {
       type = 'c';
       enemyImage = loadImage("carrot.png");
       speed = 2;
@@ -34,14 +37,17 @@ class Enemy {
   }
 
   void move() {
-    if (abs(player.x - x)>0) {
+    int dx = (abs(player.x - x));
+    int dy = (abs(player.y - y));
+    if (dx > dy) {
       if (x<player.x) {
         x +=speed ;
+        
       } else {
         x -= speed;
       }
     }
-    if (abs(player.y - y)>0) {
+    else {
       if (y<player.y) {
         y +=speed ;
       } else {
