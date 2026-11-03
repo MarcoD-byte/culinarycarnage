@@ -39,6 +39,11 @@ class Level {
         e.display();
         e.move();
         println(e.x + " " + e.y);
+        if (e.isHitPlayer(player) == true) {
+          println("hit");
+        } else {
+          println("noHit");
+        }
       }
     } else if (level ==1) {
       // First level
