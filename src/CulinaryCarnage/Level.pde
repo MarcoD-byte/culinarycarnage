@@ -1,14 +1,15 @@
 class Level {
   int level, currentEnemyCount;
   ArrayList<Enemy> enemies = new ArrayList <Enemy>();
-  IntList enemyPosition;
-  IntList levelEnemyCounts;
+  IntList enemyxPosition, enemyyPosition, levelEnemyCounts;
 
 
 
   Level () {
     levelEnemyCounts = new IntList(2, 2);
-    enemyPosition = new IntList(500, 0, 200, 200, 1, 1);
+    enemyxPosition = new IntList(500, 500);
+    enemyyPosition = new IntList(100, 200);
+    currentEnemyCount = 0;
   }
 
 
@@ -18,9 +19,9 @@ class Level {
   void level(int level) {
     if (level ==0) {
       // Tutorial level
-      for (int i= 0; levelEnemyCounts.get(0)>=currentEnemyCount; i+=2) { //<>//
+      for (int i= 0; levelEnemyCounts.get(0)>currentEnemyCount; i++) {
         println(i);
-        enemies.add(new Enemy(enemyPosition.get(i), enemyPosition.get(i+1)));
+        enemies.add(new Enemy(enemyxPosition.get(i), enemyyPosition.get(i)));
         currentEnemyCount++;
       }
       //replace background with image
@@ -33,15 +34,12 @@ class Level {
       fill(150, 50);
       textSize(15);
       text("Game made by Franklin, Jonah, Marco, and Sarah", width/2, 400);
-      for (int i = 1; i< enemies.size(); i++) {
+      for (int i = 0; i < enemies.size(); i++) {
         Enemy e = enemies.get(i);
         e.display();
         e.move();
         println(e.x + " " + e.y);
       }
-      
-      
-      
     } else if (level ==1) {
       // First level
     } else if (level ==2) {
