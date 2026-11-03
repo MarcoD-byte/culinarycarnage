@@ -28,24 +28,34 @@ class Enemy {
     //ellipseMode(CENTER);
     //fill(c1);
     //ellipse(x, y, 50, 50);
-    enemyImage.resize(size,size);
+    imageMode (CENTER);
+    enemyImage.resize(size, size);
     image (enemyImage, x, y);
   }
 
   void move() {
-    if (abs(player.x - x)>size/2+5) {
+    if (abs(player.x - x)>0) {
       if (x<player.x) {
         x +=speed ;
       } else {
         x -= speed;
       }
     }
-    if (abs(player.y - y)>size/2+15) {
+    if (abs(player.y - y)>0) {
       if (y<player.y) {
         y +=speed ;
       } else {
         y -= speed;
       }
+    }
+  }
+
+  boolean isHitPlayer(Chef c) {
+    float d = dist(x, y, c.x, c.y) ;
+    if (d<size/2+15) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
