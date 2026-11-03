@@ -1,15 +1,14 @@
-// Marco Dalcanto
 class Level {
   int level, currentEnemyCount;
   ArrayList<Enemy> enemies = new ArrayList <Enemy>();
-  IntList enemyxPosition, enemyyPosition, levelEnemyCounts;
-
+  IntList enemyxPosition, enemyyPosition, levelEnemyCounts, enemyType;
 
 
   Level () {
     levelEnemyCounts = new IntList(2, 2);
     enemyxPosition = new IntList(500, 500);
     enemyyPosition = new IntList(100, 200);
+    enemyType = new IntList(1,2);
     currentEnemyCount = 0;
   }
 
@@ -21,8 +20,8 @@ class Level {
     if (level ==0) {
       // Tutorial level
       for (int i= 0; levelEnemyCounts.get(0)>currentEnemyCount; i++) {
-        println(i);
-        enemies.add(new Enemy(enemyxPosition.get(i), enemyyPosition.get(i)));
+        //println(i);
+        enemies.add(new Enemy(enemyxPosition.get(i), enemyyPosition.get(i), enemyType.get(i)));
         currentEnemyCount++;
       }
       //replace background with image
@@ -57,4 +56,14 @@ class Level {
     } else {
     }
   }
+  boolean levelComplete (){
+    if (enemies.size() == 0){
+     return true; 
+     
+    }else{
+     return false; 
+    }
+    
+  }
+  
 }
