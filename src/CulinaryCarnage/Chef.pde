@@ -1,79 +1,31 @@
-// Franklin Roth
+class UI {
+  //vars
+  int health;
 
-class Chef {
-  // member variables
-  int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim;
 
-  PImage front, back, left, right;
-
-  boolean movingUp = false;
-  boolean movingDown = false;
-  boolean movingRight = false;
-  boolean movingLeft = false;
-
-  // construct member variables
-  Chef(int x, int y) {
-    x = 50;
-    y = 50;
-    angle = 1;
-    health = 150;
-    meleeDamage = 30;
-    speed = 3;
-    meleeCooldown = 0;
-    meleeAnim = 25;
-    front = loadImage("front-1x.png");
-    back = loadImage("back-1x.png");
-    left = loadImage("left-1x.png");
-    right = loadImage("right-1x.png");
+  //constructor
+  UI (int health) {
+    this.health = health;
   }
+
+
+  //methods
+
 
   void display() {
-    imageMode(CENTER);
-
-    if (angle == 1) {
-      image(front, x, y);
+    fill(#B76E25, 50);
+    rectMode(CENTER);
+    rect(40, 40, 110, 110, 10);
+    for (int i = 1; i<4; i++) {
+      ellipse(25*i, 20, 14, 14);
     }
-    if (angle == 2) {
-      image(back, x, y);
+    fill(#D82809, 75);
+    ellipseMode(CENTER);
+    for (int i = 1; i<(player.health)/50+1; i++) {
+      ellipse(25*i, 20, 14, 14);
     }
-    if (angle == 3) {
-      image(left, x, y);
-    }
-    if (angle == 4) {
-      image(right, x, y);
-    }
-  }
-
-  // Member methods
-
-  void update() {
-    meleeAnim -= 1;
-    meleeCooldown -= 1;
-
-    if (movingUp == true) {
-      angle = 2;
-      y = y - speed;
-    }
-    if (movingDown == true) {
-      angle = 1;
-      y = y + speed;
-    }
-    if (movingLeft == true) {
-      angle = 3;
-      x = x - speed;
-    }
-    if (movingRight == true) {
-      angle = 4;
-      x = x + speed;
-    }
-  }
-
-  void melee() {
-
-    println("Melee");
-    meleeCooldown = 100;
-    if (meleeAnim < 1) {
-      meleeAnim = 0;
-    }
+    textSize(20);
+    textMode(CENTER);
+    text("Health", 50, 50);
   }
 }
