@@ -4,19 +4,20 @@ int level;
 Enemy e1;
 Chef player;
 Level l1;
+UI ui;
 
 import gifAnimation.*;
 
 Gif attack;
 
-void setup(){
+void setup() {
   background(220);
-  size(500,500);
+  size(500, 500);
 
   l1 = new Level();
   level = 0;
   player = new Chef(width/2, height/2);
-
+  ui = new UI(player.health);
   attack = new Gif(this, "Melee.gif");
 }
 
@@ -26,6 +27,7 @@ void draw() {
   l1.level(level);
   player.update();
   player.display();
+  ui.display();
   //if(l1.levelComplete() && player@rightedge){
   //  level++;
   //  plaery.move(left side);
