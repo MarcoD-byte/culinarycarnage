@@ -1,3 +1,4 @@
+// Jonah Gong
 class Enemy {
   int x, y, size, health, damage, type;
   float speed;
