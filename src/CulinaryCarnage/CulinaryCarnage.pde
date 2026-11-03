@@ -15,7 +15,7 @@ void setup(){
 
   l1 = new Level();
   level = 0;
-  player = new Chef(100,100);
+  player = new Chef(width/2, height/2);
 
   attack = new Gif(this, "Melee.gif");
 }
