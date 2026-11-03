@@ -1,24 +1,21 @@
 class Enemy {
-  int x, y, size, health, damage;
+  int x, y, size, health, damage, type;
   float speed;
   color c1;
   PImage enemyImage;
-  char type;
-  
+  //Types define the type of enemy, 1 = carrot, 2 = onion
 
-  Enemy(int x, int y, char type) {
+  Enemy(int x, int y, int type) {
     this.x = x;
     this.y = y;
     this.type = type;
-    if (type == 'c') {
-      type = 'c';
+    if (type == 1) {
       enemyImage = loadImage("carrot.png");
       speed = 2;
       size = 50;
       health = 200;
       damage = 10;
-    } else {
-      type = 'o';
+    } if (type == 2) {
       enemyImage = loadImage("onion.png");
       speed = 1;
       size = 75;
