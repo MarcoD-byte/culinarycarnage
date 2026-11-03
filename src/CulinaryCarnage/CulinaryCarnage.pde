@@ -26,6 +26,10 @@ void draw() {
   l1.level(level);
   player.update();
   player.display();
+  //if(l1.levelComplete() && player@rightedge){
+  //  level++;
+  //  plaery.move(left side);
+  //}
 }
 
 void keyPressed() {
