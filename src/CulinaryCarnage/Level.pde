@@ -19,12 +19,13 @@ class Level {
   void level(int level) {
     if (level ==0) {
       // Tutorial level
+      enemies.clear();
       for (int i= 0; levelEnemyCounts.get(0)>currentEnemyCount; i++) {
         //println(i);
         enemies.add(new Enemy(enemyxPosition.get(i), enemyyPosition.get(i), enemyType.get(i)));
         currentEnemyCount++;
       }
-      
+
       //replace background with image
       background(10);
       fill(#E89921, 95);
@@ -35,8 +36,6 @@ class Level {
       fill(150, 50);
       textSize(15);
       text("Game made by Franklin, Jonah, Marco, and Sarah", width/2, 400);
-      
-      
     } else if (level ==1) {
       // First level
       background(10);
