@@ -46,7 +46,7 @@ class Level {
       
       fill(150, 50);
       textSize(15);
-      text("Game made by Franklin, Jonah, Marco, and Sarah", width/2, 400);
+      text("Game made by Franklin, Jonah, Marco, and Sarah", width/2, height-100);
     } else if (level ==1) {
       // First level
       background(bg);
