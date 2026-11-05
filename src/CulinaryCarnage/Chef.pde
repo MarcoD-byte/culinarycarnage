@@ -98,7 +98,15 @@ class Chef {
   }
 
     boolean atREdge() {
-    if (player.x>=width-25) {
+    if (player.x>width-25) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  boolean atLEdge() {
+    if (player.x>25) {
       return true;
     } else {
       return false;
