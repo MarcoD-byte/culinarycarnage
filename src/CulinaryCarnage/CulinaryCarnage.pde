@@ -14,7 +14,7 @@ Gif attack;
 
 void setup() {
   background(220);
-  size(500, 500);
+  size(800, 800);
   l1 = new Level();
   level = 0;
   player = new Chef(this);
