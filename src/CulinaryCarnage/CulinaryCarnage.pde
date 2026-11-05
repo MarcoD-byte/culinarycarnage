@@ -47,6 +47,10 @@ void draw() {
     l1.currentEnemyCount=0;
     player.relocate(25, height/2);
     level++;
+  }else if(player.atLEdge()){
+   l1.currentEnemyCount=0;
+   level--;
+   player.relocate(width-25, height/2);
   }
 }
 
