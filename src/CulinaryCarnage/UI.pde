@@ -26,7 +26,7 @@ class UI {
       ellipse(25*i, 20, 14, 14);
     }
     textSize(20);
-    textMode(CENTER);
+    textAlign(CENTER);
     text("Health", 50, 50);
   }
 }
