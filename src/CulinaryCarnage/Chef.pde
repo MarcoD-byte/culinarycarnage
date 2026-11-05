@@ -89,6 +89,14 @@ class Chef {
     }
   }
 
+    boolean atEdge() {
+    if (player.x>=width-25) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void melee() {
 
     println("Melee");
