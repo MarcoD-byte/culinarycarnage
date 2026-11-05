@@ -43,33 +43,49 @@ class Chef {
   void display() {
     imageMode(CENTER);
 
-    if (angle == 1 && movingDown == true){
+    if (angle == 1 && movingDown == true) {
       image(walkd, x, y);
-    }else if (angle == 1) {
+    } else if (angle == 1) {
       image(front, x, y);
     }
-    if (angle == 2 && movingUp == true){
+    if (angle == 2 && movingUp == true) {
       image(walkup, x, y);
-    }else if (angle == 2) {
+    } else if (angle == 2) {
       image(back, x, y);
     }
-    if (angle == 3 && movingLeft == true){
+    if (angle == 3 && movingLeft == true) {
       image(walkl, x, y);
-    }else if (angle == 3) {
+    } else if (angle == 3) {
       image(left, x, y);
     }
-    if (angle == 4 && movingRight == true){
+    if (angle == 4 && movingRight == true) {
       image(walkr, x, y);
-    }else 
+    } else
     if (angle == 4) {
       image(right, x, y);
     }
-    if (attacking == true){
+    if (attacking == true) {
       attack.play();
-      image(attack,x, y);
-    if(attack.currentFrame()>=3){
-      attacking = false; 
-    }
+      pushMatrix();
+
+      image(attack, x, y);
+      if (angle == 2) {
+        rotate(PI);
+      }
+      if (angle == 1) {
+        rotate(0);
+      }
+      if (angle == 3) {
+        rotate(-HALF_PI);
+      }
+      if (angle == 4) {
+        rotate(HALF_PI);
+      }
+
+      popMatrix();
+      if (attack.currentFrame()>=3) {
+        attacking = false;
+      }
     }
   }
 
