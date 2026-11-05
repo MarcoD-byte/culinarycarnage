@@ -106,7 +106,7 @@ class Chef {
   }
   
   boolean atLEdge() {
-    if (player.x>25) {
+    if (player.x<25) {
       return true;
     } else {
       return false;
