@@ -79,11 +79,11 @@ class Chef {
     meleeAnim -= 1;
     meleeCooldown -= 1;
 
-    if (movingUp == true) {
+    if (movingUp == true && y>25) {
       angle = 2;
       y = y - speed;
     }
-    if (movingDown == true) {
+    if (movingDown == true && y < height-25) {
       angle = 1;
       y = y + speed;
     }
