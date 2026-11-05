@@ -43,7 +43,7 @@ void draw() {
       println("noHit");
     }
   }
-    if (l1.levelComplete() && player.atEdge()) {
+    if (l1.levelComplete() && player.atREdge()) {
     l1.currentEnemyCount=0;
     player.relocate(25, height/2);
     level++;
