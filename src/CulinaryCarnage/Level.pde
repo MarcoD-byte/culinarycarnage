@@ -6,9 +6,9 @@ class Level {
 
   Level () {
     levelEnemyCounts = new IntList(0, 2);
-    enemyxPosition = new IntList(500, 500);
-    enemyyPosition = new IntList(100, 200);
-    enemyType = new IntList(1, 2);
+    enemyxPosition = new IntList(400, 400);
+    enemyyPosition = new IntList(height/3, 2*height/3);
+    enemyType = new IntList(1, 1);
     currentEnemyCount = 0;
   }
 
@@ -31,8 +31,15 @@ class Level {
       fill(#E89921, 95);
       textSize(30);
       textAlign(CENTER);
+      rectMode(CENTER);
       text("Move with\nWASD", width/3, 100);
       text("Use space\nto attack", 2* width/3, 100);
+      text("Enter kitchen\nhere", width-150, height/2);
+      triangle(width-70+50, height/2+50+25, width-70+50, height/2+50-25, width, height/2+50);
+      triangle(width-70+50-25, height/2+50+25, width-70+50-25, height/2+50-25, width-25, height/2+50);
+      triangle(width-70+50-50, height/2+50+25, width-70+50-50, height/2+50-25, width-50, height/2+50);
+      triangle(width-70+50-75, height/2+50+25, width-70+50-75, height/2+50-25, width-75, height/2+50);
+      
       fill(150, 50);
       textSize(15);
       text("Game made by Franklin, Jonah, Marco, and Sarah", width/2, 400);
