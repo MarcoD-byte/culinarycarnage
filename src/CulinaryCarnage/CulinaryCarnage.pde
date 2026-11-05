@@ -26,7 +26,8 @@ void setup() {
 void draw() {
  if (player.health<1){
     level=100;
-  }  l1.level(level);
+  }  
+  l1.level(level);
   player.update();
   player.display();
   ui.display();
