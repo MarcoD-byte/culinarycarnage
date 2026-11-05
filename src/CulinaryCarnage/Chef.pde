@@ -2,9 +2,13 @@
 
 class Chef {
   // member variables
+  PApplet parent;
+
   int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim;
 
   PImage front, back, left, right;
+  
+  Gif walkr, walkl, walkup, walkd;
 
   boolean movingUp = false;
   boolean movingDown = false;
@@ -12,7 +16,7 @@ class Chef {
   boolean movingLeft = false;
 
   // construct member variables
-  Chef(int x, int y) {
+  Chef(int x, int y, PApplet app) {
     x = 50;
     y = 50;
     angle = 1;
@@ -25,20 +29,37 @@ class Chef {
     back = loadImage("back-1x.png");
     left = loadImage("left-1x.png");
     right = loadImage("right-1x.png");
+    walkr = new Gif(app, "walkr.gif");
+    walkr.play();
+    walkl = new Gif(app, "walkl.gif");
+    walkl.play();
+    walkup = new Gif(app, "walkup.gif");
+    walkup.play();
+    walkd = new Gif(app, "walkd.gif");
+    walkd.play();
   }
 
   void display() {
     imageMode(CENTER);
 
-    if (angle == 1) {
+    if (angle == 1 && movingDown == true){
+      image(walkd, x, y);
+    }else if (angle == 1) {
       image(front, x, y);
     }
-    if (angle == 2) {
+    if (angle == 2 && movingUp == true){
+      image(walkup, x, y);
+    }else if (angle == 2) {
       image(back, x, y);
     }
-    if (angle == 3) {
+    if (angle == 3 && movingLeft == true){
+      image(walkl, x, y);
+    }else if (angle == 3) {
       image(left, x, y);
     }
+    if (angle == 4 && movingRight == true){
+      image(walkr, x, y);
+    }else 
     if (angle == 4) {
       image(right, x, y);
     }
