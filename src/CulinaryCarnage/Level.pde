@@ -1,7 +1,6 @@
 // Marco DalCanto
 class Level {
   int level, currentEnemyCount;
-  ArrayList<Enemy> enemies = new ArrayList <Enemy>();
   IntList enemyxPosition, enemyyPosition, levelEnemyCounts, enemyType;
 
 
@@ -35,17 +34,7 @@ class Level {
       fill(150, 50);
       textSize(15);
       text("Game made by Franklin, Jonah, Marco, and Sarah", width/2, 400);
-      for (int i = 0; i < enemies.size(); i++) {
-        Enemy e = enemies.get(i);
-        e.display();
-        e.move();
-        println(e.x + " " + e.y);
-        if (e.isHitPlayer(player) == true) {
-          println("hit");
-        } else {
-          println("noHit");
-        }
-      }
+     
     } else if (level ==1) {
       // First level
     } else if (level ==2) {
@@ -55,8 +44,19 @@ class Level {
     } else if (level ==4) {
       // First level
     } else {
+      // You died end screen
+      enemies.clear();
+      background(10);
+      fill(#E89921, 95);
+      textSize(30);
+      textAlign(CENTER);
+      text("You Died", width/3, 100);
+      text("Walk right to \n re-start", 2* width/3, 100);
+      
     }
   }
+  
+  
   boolean levelComplete (){
     if (enemies.size() == 0){
      return true; 
