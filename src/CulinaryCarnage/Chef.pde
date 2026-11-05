@@ -14,6 +14,7 @@ class Chef {
   boolean movingDown = false;
   boolean movingRight = false;
   boolean movingLeft = false;
+  boolean attacking = false;
 
   // construct member variables
   Chef(int x, int y, PApplet app) {
@@ -63,6 +64,13 @@ class Chef {
     if (angle == 4) {
       image(right, x, y);
     }
+    if (attacking == true){
+      attack.play();
+      image(attack,x, y);
+    if(attack.currentFrame()>=3){
+      attacking = false; 
+    }
+    }
   }
 
   // Member methods
@@ -109,8 +117,7 @@ class Chef {
       println("Melee");
       meleeCooldown = 100;
       meleeAnim -= 1;
-      attack.play();
-      image(attack, player.x, player.y);
+    
       if (player.angle == 2) {
         rotate(PI);
       }
