@@ -7,7 +7,7 @@ class Chef {
   int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim;
 
   PImage front, back, left, right;
-  
+
   Gif walkr, walkl, walkup, walkd;
 
   boolean movingUp = false;
@@ -24,12 +24,13 @@ class Chef {
     health = 150;
     meleeDamage = 30;
     speed = 3;
-    meleeCooldown = 0;
+    meleeCooldown = 100;
     meleeAnim = 25;
     front = loadImage("front-1x.png");
     back = loadImage("back-1x.png");
     left = loadImage("left-1x.png");
     right = loadImage("right-1x.png");
+
     walkr = new Gif(app, "walkr.gif");
     walkr.play();
     walkl = new Gif(app, "walkl.gif");
@@ -61,9 +62,9 @@ class Chef {
     if (angle == 4 && movingRight == true) {
       image(walkr, x, y);
     } else
-    if (angle == 4) {
-      image(right, x, y);
-    }
+      if (angle == 4) {
+        image(right, x, y);
+      }
     if (attacking == true) {
       attack.play();
       pushMatrix();
@@ -95,11 +96,12 @@ class Chef {
     meleeAnim -= 1;
     meleeCooldown -= 1;
 
-    if (movingUp == true && y>25) {
+
+    if (movingUp == true) {
       angle = 2;
       y = y - speed;
     }
-    if (movingDown == true && y < height-25) {
+    if (movingDown == true) {
       angle = 1;
       y = y + speed;
     }
@@ -113,14 +115,14 @@ class Chef {
     }
   }
 
-    boolean atREdge() {
+  boolean atREdge() {
     if (player.x>width-25) {
       return true;
     } else {
       return false;
     }
   }
-  
+
   boolean atLEdge() {
     if (player.x<25) {
       return true;
@@ -129,35 +131,24 @@ class Chef {
     }
   }
 
-  void relocate (int x, int y){
-   this.x = x;
-   this.y = y;
+  void relocate (int x, int y) {
+    this.x = x;
+    this.y = y;
   }
 
 
   void melee() {
-
     if (player.meleeCooldown < 1) {
       println("Melee");
       meleeCooldown = 100;
       meleeAnim -= 1;
-    
-      if (player.angle == 2) {
-        rotate(PI);
-      }
-      if (player.angle == 1) {
-        rotate(-PI);
-      }
-      if (player.angle == 3) {
-        rotate(-HALF_PI);
-      }
-      if (player.angle == 4) {
-        rotate(HALF_PI);
-      }
+
+
       if (player.meleeAnim == 0) {
         attack.stop();
-        player.meleeAnim = 25;
+        meleeAnim = 25;
       }
+      meleeCooldown = 100;
     } else {
       println("Cooldown: " + player.meleeCooldown);
     }
