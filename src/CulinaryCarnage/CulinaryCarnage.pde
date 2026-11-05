@@ -26,6 +26,7 @@ void setup() {
 void draw() {
  if (player.health<1){
     level=100;
+    player.health=150;
   }  
   l1.level(level);
   player.update();
@@ -46,7 +47,11 @@ void draw() {
     if (l1.levelComplete() && player.atREdge()) {
     l1.currentEnemyCount=0;
     player.relocate(25, height/2);
-    level++;
+    if(l1.dead){
+      level=1;
+    }else{
+      level++;
+    }
   }else if(player.atLEdge()){
    l1.currentEnemyCount=0;
    level--;
