@@ -89,7 +89,7 @@ class Chef {
     }
   }
 
-    boolean atEdge() {
+    boolean atREdge() {
     if (player.x>=width-25) {
       return true;
     } else {
