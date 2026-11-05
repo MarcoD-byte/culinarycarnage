@@ -5,6 +5,8 @@ Enemy e1;
 Chef player;
 Level l1;
 UI ui;
+ArrayList<Enemy> enemies = new ArrayList <Enemy>();
+
 
 import gifAnimation.*;
 
@@ -13,7 +15,6 @@ Gif attack;
 void setup() {
   background(220);
   size(500, 500);
-
   l1 = new Level();
   level = 0;
   player = new Chef(width/2, height/2);
@@ -23,11 +24,24 @@ void setup() {
 
 
 void draw() {
+
   background(255);
   l1.level(level);
   player.update();
   player.display();
   ui.display();
+  for (int i = 0; i < enemies.size(); i++) {
+    Enemy e = enemies.get(i);
+    e.display();
+    e.move();
+    println(e.x + " " + e.y);
+    if (e.isHitPlayer(player) == true) {
+      println("hit");
+      player.health --;
+    } else {
+      println("noHit");
+    }
+  }
   //if(l1.levelComplete() && player@rightedge){
   //  level++;
   //  plaery.move(left side);
