@@ -2,7 +2,7 @@
 class Level {
   int level, currentEnemyCount;
   IntList enemyxPosition, enemyyPosition, levelEnemyCounts, enemyType;
-
+  PImage bg;
 
   Level () {
     levelEnemyCounts = new IntList(0, 2);
@@ -10,6 +10,7 @@ class Level {
     enemyyPosition = new IntList(height/3, 2*height/3);
     enemyType = new IntList(1, 1);
     currentEnemyCount = 0;
+    bg = loadImage("bg.png");
   }
 
 
@@ -27,7 +28,7 @@ class Level {
       }
 
       //replace background with image
-      background(10);
+      background(bg);
       fill(#E89921, 95);
       textSize(30);
       textAlign(CENTER);
@@ -45,7 +46,7 @@ class Level {
       text("Game made by Franklin, Jonah, Marco, and Sarah", width/2, 400);
     } else if (level ==1) {
       // First level
-      background(10);
+      background(bg);
       for (int i= 0; levelEnemyCounts.get(1)>currentEnemyCount; i++) {
         //println(i);
         enemies.add(new Enemy(enemyxPosition.get(i), enemyyPosition.get(i), enemyType.get(i)));
