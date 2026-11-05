@@ -43,10 +43,11 @@ void draw() {
       println("noHit");
     }
   }
-  //if(l1.levelComplete() && player@rightedge){
-  //  level++;
-  //  plaery.move(left side);
-  //}
+    if (l1.levelComplete() && player.atEdge()) {
+    l1.currentEnemyCount=0;
+    player.relocate(25, height/2);
+    level++;
+  }
 }
 
 void keyPressed() {
