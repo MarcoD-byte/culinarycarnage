@@ -3,6 +3,7 @@ class Level {
   int level, currentEnemyCount;
   IntList enemyxPosition, enemyyPosition, levelEnemyCounts, enemyType;
   PImage bg;
+  boolean dead;
 
   Level () {
     levelEnemyCounts = new IntList(0, 2);
@@ -11,6 +12,8 @@ class Level {
     enemyType = new IntList(1, 1);
     currentEnemyCount = 0;
     bg = loadImage("bg.png");
+    bg.resize(800,800);
+    dead = false;
   }
 
 
@@ -61,7 +64,7 @@ class Level {
       // First level
     } else {
       // You died end screen
-
+      dead = true;
       enemies.clear();
       background(10);
       fill(#E89921, 95);
