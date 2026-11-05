@@ -17,8 +17,8 @@ class Chef {
 
   // construct member variables
   Chef(int x, int y, PApplet app) {
-    x = 50;
-    y = 50;
+    x = width/2;
+    y = width/2;
     angle = 1;
     health = 150;
     meleeDamage = 30;
@@ -96,6 +96,12 @@ class Chef {
       return false;
     }
   }
+
+  void relocate (int x, int y){
+   this.x = x;
+   this.y = y;
+  }
+
 
   void melee() {
 
