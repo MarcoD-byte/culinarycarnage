@@ -99,8 +99,31 @@ class Chef {
 
   void melee() {
 
-    println("Melee");
-    meleeCooldown = 100;
+    if (player.meleeCooldown < 1) {
+      println("Melee");
+      meleeCooldown = 100;
+      meleeAnim -= 1;
+      attack.play();
+      image(attack, player.x, player.y);
+      if (player.angle == 2) {
+        rotate(PI);
+      }
+      if (player.angle == 1) {
+        rotate(-PI);
+      }
+      if (player.angle == 3) {
+        rotate(-HALF_PI);
+      }
+      if (player.angle == 4) {
+        rotate(HALF_PI);
+      }
+      if (player.meleeAnim == 0) {
+        attack.stop();
+        player.meleeAnim = 25;
+      }
+    } else {
+      println("Cooldown: " + player.meleeCooldown);
+    }
     if (meleeAnim < 1) {
       meleeAnim = 0;
     }
