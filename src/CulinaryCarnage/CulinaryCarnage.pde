@@ -56,7 +56,9 @@ void keyPressed() {
   if (key == 'a') player.movingLeft = true;
   if (key == 'd') player.movingRight = true;
 
-  if (keyCode == 32) {
+ if (keyCode == 32) {
+    player.attacking = true;
+    attack.jump(0);
     player.melee();
   }
 }
