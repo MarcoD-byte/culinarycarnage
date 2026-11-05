@@ -56,14 +56,7 @@ void keyPressed() {
   if (key == 'd') player.movingRight = true;
 
   if (keyCode == 32) {
-    if (player.meleeCooldown < 1) {
-      player.melee();
-      attack.play();
-      image(attack, player.x, player.y);
-      attack.noLoop();
-    } else {
-      println("Cooldown: " + player.meleeCooldown);
-    }
+    player.melee();
   }
 }
 
