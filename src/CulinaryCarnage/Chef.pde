@@ -17,7 +17,7 @@ class Chef {
   boolean attacking = false;
 
   // construct member variables
-  Chef(int x, int y, PApplet app) {
+  Chef(PApplet app) {
     x = width/2;
     y = width/2;
     angle = 1;
