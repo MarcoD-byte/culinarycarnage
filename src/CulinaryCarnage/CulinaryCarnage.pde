@@ -17,7 +17,7 @@ void setup() {
   size(500, 500);
   l1 = new Level();
   level = 0;
-  player = new Chef(width/2, height/2, PApplet app);
+  player = new Chef(width/2, height/2, this);
   ui = new UI(player.health);
   attack = new Gif(this, "Melee.gif");
 }
