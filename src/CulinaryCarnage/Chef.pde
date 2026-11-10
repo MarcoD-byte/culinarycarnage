@@ -4,8 +4,8 @@ class Chef {
   // member variables
   PApplet parent;
 
-  int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim;
-
+  int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim, meleeX, meleeY;
+  float meleeAngle;
   PImage front, back, left, right;
 
   Gif walkr, walkl, walkup, walkd;
@@ -20,12 +20,15 @@ class Chef {
   Chef(PApplet app) {
     x = width/2;
     y = width/2;
+    meleeX = x;
+    meleeY = y;
     angle = 1;
     health = 150;
     meleeDamage = 30;
     speed = 3;
     meleeCooldown = 100;
     meleeAnim = 25;
+    meleeAngle = 0;
     front = loadImage("front-1x.png");
     back = loadImage("back-1x.png");
     left = loadImage("left-1x.png");
@@ -61,32 +64,24 @@ class Chef {
     }
     if (angle == 4 && movingRight == true) {
       image(walkr, x, y);
-    } else
-      if (angle == 4) {
-        image(right, x, y);
-      }
+    } else if (angle == 4) {
+      image(right, x, y);
+    }
+
     if (attacking == true) {
       attack.play();
       pushMatrix();
 
-      image(attack, x, y);
-      if (angle == 2) {
-        rotate(PI);
-      }
-      if (angle == 1) {
-        rotate(0);
-      }
-      if (angle == 3) {
-        rotate(-HALF_PI);
-      }
-      if (angle == 4) {
-        rotate(HALF_PI);
-      }
+      image(attack, meleeX, meleeY);
+      rotate(meleeAngle);
 
       popMatrix();
       if (attack.currentFrame()>=3) {
         attacking = false;
       }
+    }
+    if (attacking == false) {
+      attack.noLoop();
     }
   }
 
@@ -95,6 +90,27 @@ class Chef {
   void update() {
     meleeAnim -= 1;
     meleeCooldown -= 1;
+
+    if (angle == 2) {
+      meleeAngle = PI;
+      meleeY = y - 25;
+      meleeX = x;
+    }
+    if (angle == 1) {
+      meleeAngle = 0;
+      meleeY = y + 25;
+      meleeX = x;
+    }
+    if (angle == 3) {
+      meleeAngle = -HALF_PI;
+      meleeX = x - 25;
+      meleeY = y;
+    }
+    if (angle == 4) {
+      meleeAngle = HALF_PI;
+      meleeX = x + 25;
+      meleeY = y;
+    }
 
 
     if (movingUp == true) {
@@ -115,8 +131,8 @@ class Chef {
     }
   }
 
- boolean atREdge() {
-    if (player.x>width-100) {
+  boolean atREdge() {
+    if (player.x>width-25) {
       return true;
     } else {
       return false;
