@@ -20,8 +20,8 @@ class Chef {
   Chef(PApplet app) {
     x = width/2;
     y = width/2;
-    meleeX = x;
-    meleeY = y;
+    meleeX = 0;
+    meleeY = 0;
     angle = 1;
     health = 150;
     meleeDamage = 30;
@@ -71,9 +71,11 @@ class Chef {
     if (attacking == true) {
       attack.play();
       pushMatrix();
-
-      image(attack, meleeX, meleeY);
+      
+      translate(meleeX,meleeY);
       rotate(meleeAngle);
+
+      image(attack,0,0);
 
       popMatrix();
       if (attack.currentFrame()>=3) {
@@ -92,23 +94,23 @@ class Chef {
     meleeCooldown -= 1;
 
     if (angle == 2) {
-      meleeAngle = PI;
-      meleeY = y - 25;
+      meleeAngle = 0;
+      meleeY = y - 28;
       meleeX = x;
     }
     if (angle == 1) {
-      meleeAngle = 0;
-      meleeY = y + 25;
+      meleeAngle = PI;
+      meleeY = y + 28;
       meleeX = x;
     }
     if (angle == 3) {
       meleeAngle = -HALF_PI;
-      meleeX = x - 25;
+      meleeX = x - 28;
       meleeY = y;
     }
     if (angle == 4) {
       meleeAngle = HALF_PI;
-      meleeX = x + 25;
+      meleeX = x + 28;
       meleeY = y;
     }
 
@@ -132,7 +134,7 @@ class Chef {
   }
 
   boolean atREdge() {
-    if (player.x>width-75) {
+    if (player.x>width-25) {
       return true;
     } else {
       return false;
