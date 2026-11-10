@@ -38,11 +38,11 @@ class Level {
       rectMode(CENTER);
       text("Move with\nWASD", width/3, 100);
       text("Use space\nto attack", 2* width/3, 100);
-      text("Enter kitchen\nhere", width-150, height/2);
-      triangle(width-70+50, height/2+50+25, width-70+50, height/2+50-25, width, height/2+50);
-      triangle(width-70+50-25, height/2+50+25, width-70+50-25, height/2+50-25, width-25, height/2+50);
-      triangle(width-70+50-50, height/2+50+25, width-70+50-50, height/2+50-25, width-50, height/2+50);
-      triangle(width-70+50-75, height/2+50+25, width-70+50-75, height/2+50-25, width-75, height/2+50);
+     text("Enter kitchen\nhere", width-150, height/2-(height/5));
+      for (int i =0; i<4; i++){
+       triangle (width-(25*i) -125, height/2-25, width -(25*i) -125, height/2 -75, width - (25*i)-100, height/2-50); 
+      }
+      
       
       fill(150, 50);
       textSize(15);
