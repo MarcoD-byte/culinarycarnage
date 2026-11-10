@@ -5,8 +5,9 @@ Enemy e1;
 Chef player;
 Level l1;
 UI ui;
+PowerUp pu01;
 ArrayList<Enemy> enemies = new ArrayList <Enemy>();
-
+ArrayList<PowerUp> powups = new ArrayList <PowerUp>();
 
 import gifAnimation.*;
 
@@ -44,6 +45,22 @@ void draw() {
       println("noHit");
     }
   }
+
+ //PowerUp display & collision 
+  for (int i = 0; i<powups.size(); i++){
+  PowerUp p = powups.get(i);
+  p.display();
+    if(p.isHit(player) == true) {
+      if (p.type == 'a'){
+        // add to chef class
+        //consider where to put variable
+        p.cooldown -=20;
+      }else if(p.type == 'b'){
+        //code for powerup b
+      }
+    }
+  }
+
     if (l1.levelComplete() && player.atREdge()) {
     l1.currentEnemyCount=0;
     player.relocate(25, 3*height/4);
