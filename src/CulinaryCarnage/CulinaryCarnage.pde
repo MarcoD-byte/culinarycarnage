@@ -39,6 +39,7 @@ void draw() {
     Enemy e = enemies.get(i);
     e.display();
     e.move();
+    e.attack();
     println(e.x + " " + e.y);
     if (e.isHitPlayer(player) == true) {
       println("hit");
