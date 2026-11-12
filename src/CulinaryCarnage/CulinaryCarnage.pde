@@ -12,6 +12,7 @@ ArrayList<PowerUp> powups = new ArrayList <PowerUp>();
 import gifAnimation.*;
 
 Gif attack;
+Gif heart;
 
 void setup() {
   background(220);
@@ -21,6 +22,7 @@ void setup() {
   player = new Chef(this);
   ui = new UI(player.health);
   attack = new Gif(this, "Melee.gif");
+  heart = new Gif(this, "heart.gif");
 }
 
 
@@ -66,6 +68,7 @@ void draw() {
     player.relocate(25, 3*height/4);
     if(l1.dead){
       level=1;
+      l1.dead = false;
     }else{
       level++;
     }
