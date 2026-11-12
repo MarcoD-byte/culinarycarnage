@@ -2,11 +2,15 @@
 class UI {
   //vars
   int health;
-
+  IntList hearts;
 
   //constructor
   UI (int health) {
     this.health = health;
+    IntList hearts = new IntList ();
+    for (int i=0; i< health; i++) {
+      hearts.append(i);
+    }
   }
 
 
@@ -14,19 +18,18 @@ class UI {
 
 
   void display() {
-    fill(#B76E25, 50);
-    rectMode(CENTER);
-    rect(40, 40, 110, 110, 10);
-    for (int i = 1; i<4; i++) {
-      ellipse(25*i, 20, 14, 14);
+    if (!l1.dead) {
+      fill(#B76E25, 50);
+      rectMode(CENTER);
+      rect(625, 75, 225, 150, 10);
+      fill(#D82809);
+      ellipseMode(CENTER);
+      for (int i = 1; i<(player.health)/50; i++) {
+        image(heart, 50*i+525, 50);
+      }
+      textSize(25);
+      textAlign(CENTER);
+      text("Health", 625, 125);
     }
-    fill(#D82809, 75);
-    ellipseMode(CENTER);
-    for (int i = 1; i<(player.health)/50+1; i++) {
-      ellipse(25*i, 20, 14, 14);
-    }
-    textSize(20);
-    textAlign(CENTER);
-    text("Health", 50, 50);
   }
 }
