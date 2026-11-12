@@ -182,7 +182,6 @@ class Chef {
   boolean meleeEnemy(Enemy e) {
     float d = dist(meleeX, meleeY, e.x, e.y);
     if (d < e.size) {
-      e.health -= meleeDamage;
       print("Enemy hit with melee");
       return true;
     } else {
