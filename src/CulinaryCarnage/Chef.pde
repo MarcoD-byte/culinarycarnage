@@ -7,6 +7,7 @@ class Chef {
   int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim, meleeX, meleeY;
   float meleeAngle;
   PImage front, back, left, right;
+  Timer iFrames;
 
   Gif walkr, walkl, walkup, walkd;
 
@@ -29,6 +30,9 @@ class Chef {
     meleeCooldown = 100;
     meleeAnim = 25;
     meleeAngle = 0;
+    
+    iFrames = new Timer(1000);
+    
     front = loadImage("front-1x.png");
     back = loadImage("back-1x.png");
     left = loadImage("left-1x.png");
@@ -71,11 +75,11 @@ class Chef {
     if (attacking == true) {
       attack.play();
       pushMatrix();
-      
-      translate(meleeX,meleeY);
+
+      translate(meleeX, meleeY);
       rotate(meleeAngle);
 
-      image(attack,0,0);
+      image(attack, 0, 0);
 
       popMatrix();
       if (attack.currentFrame()>=3) {
@@ -92,6 +96,7 @@ class Chef {
   void update() {
     meleeAnim -= 1;
     meleeCooldown -= 1;
+
 
     if (angle == 2) {
       meleeAngle = 0;
@@ -154,7 +159,6 @@ class Chef {
     this.y = y;
   }
 
-
   void melee() {
     if (player.meleeCooldown < 1) {
       println("Melee");
@@ -172,6 +176,26 @@ class Chef {
     }
     if (meleeAnim < 1) {
       meleeAnim = 0;
+    }
+  }
+
+  boolean meleeEnemy(Enemy e) {
+    float d = dist(meleeX, meleeY, e.x, e.y);
+    if (d < e.size) {
+      e.health -= meleeDamage;
+      print("Enemy hit with melee");
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  void takeDamage(int d) {
+    if (iFrames.isFinished() == true) {
+      health -= d;
+      println("damagetaken");
+    } else {
+      iFrames.start();
     }
   }
 }
