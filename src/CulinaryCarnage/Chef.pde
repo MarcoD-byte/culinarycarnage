@@ -30,9 +30,9 @@ class Chef {
     meleeCooldown = 100;
     meleeAnim = 25;
     meleeAngle = 0;
-    
+
     iFrames = new Timer(1000);
-    
+
     front = loadImage("front-1x.png");
     back = loadImage("back-1x.png");
     left = loadImage("left-1x.png");
@@ -179,21 +179,10 @@ class Chef {
     }
   }
 
-  boolean meleeEnemy(Enemy e) {
-    float d = dist(meleeX, meleeY, e.x, e.y);
-    if (d < e.size) {
-      print("Enemy hit with melee");
-      return true;
-    } else {
-      return false;
-    }
-  }
-  
   void takeDamage(int d) {
     if (iFrames.isFinished() == true) {
       health -= d;
       println("damagetaken");
-    } else {
       iFrames.start();
     }
   }
