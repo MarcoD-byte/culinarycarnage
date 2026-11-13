@@ -29,7 +29,7 @@ void setup() {
 void draw() {
  if (player.health<1){
     level=100;
-    player.health=150;
+    player.health=3;
   }  
   l1.level(level);
   player.update();
@@ -42,8 +42,8 @@ void draw() {
     e.attack();
     println(e.x + " " + e.y);
     if (e.isHitPlayer(player) == true) {
-      println("hit");
-      player.health --;
+      println("hit");    
+      player.takeDamage(1);
     } 
     if (e.isHitPlayerMelee(player) == true) {
       e.takeDamage(1);
