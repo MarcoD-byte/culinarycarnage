@@ -44,8 +44,12 @@ void draw() {
     if (e.isHitPlayer(player) == true) {
       println("hit");
       player.health --;
-    } else {
-      println("noHit");
+    } 
+    if (e.isHitPlayerMelee(player) == true) {
+      e.takeDamage(1);
+    }
+    if (e.health < 1) {
+      enemies.remove(e);
     }
   }
 
