@@ -5,7 +5,7 @@ Enemy e1;
 Chef player;
 Level l1;
 UI ui;
-PowerUp pu01;
+PowerUp pu01, p;
 ArrayList<Enemy> enemies = new ArrayList <Enemy>();
 ArrayList<PowerUp> powups = new ArrayList <PowerUp>();
 
@@ -23,6 +23,7 @@ void setup() {
   ui = new UI(player.health);
   attack = new Gif(this, "Melee.gif");
   heart = new Gif(this, "heart.gif");
+  powups.add( new PowerUp (width/3, height/2, 'a'));
 }
 
 
@@ -32,6 +33,9 @@ void draw() {
     player.health=3;
   }  
   l1.level(level);
+  for (PowerUp p : powups) {
+    p.display();
+  }
   player.update();
   player.display();
   ui.display();
@@ -54,15 +58,16 @@ void draw() {
   }
 
  //PowerUp display & collision 
-  for (int i = 0; i<powups.size(); i++){
-  PowerUp p = powups.get(i);
-  p.display();
-    if(p.isHit(player) == true) {
-      if (p.type == 'a'){
+  for (int i = 0; i<powups.size(); i++) {
+    PowerUp p = powups.get(i);
+
+    if (p.isCollected == true) {
+      if (p.type == 'a') {
         // add to chef class
         //consider where to put variable
         p.cooldown -=20;
-      }else if(p.type == 'b'){
+        powups.remove(p);
+      } else if (p.type == 'b') {
         //code for powerup b
       }
     }
@@ -98,6 +103,17 @@ void keyPressed() {
     }
     attack.jump(0);
     player.melee();
+  }
+if (key == 'f') {
+    for (PowerUp p : powups) {
+      if (p.isClose(player) == true) {
+        if (p.isOpen == false) {
+          p.isOpen = true;
+        } else if (p.isCollected == false) {
+          p.isCollected = true;
+        }
+      }
+    }
   }
 }
 
