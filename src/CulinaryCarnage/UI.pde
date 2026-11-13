@@ -1,4 +1,4 @@
-// Marco DalCanto //<>// //<>// //<>// //<>//
+// Marco DalCanto //<>// //<>// //<>//
 class UI {
   //vars
   int health, heartCount;
@@ -15,6 +15,7 @@ class UI {
 
 
   void display() {
+    if(!l1.dead){
     heartCount = 0;
     hearts.clear();
     this.health = player.health;
@@ -27,7 +28,7 @@ class UI {
     textSize(25);
     textAlign(CENTER);
     text("Health", 625, 125);
-    for (int i = 0; i<health; i++) {
+    for (int i = 0; i<health/50; i++) {
       hearts.add(new Heart(50*i+550, 50));
       heartCount++;
     }
@@ -36,11 +37,12 @@ class UI {
       h.display();
     }
   }
+}
 
-  //void damaged() {
-  //  Heart h = hearts.get(health-1);
-  //  h.animate();
-  //}
+//void damaged() {
+//  Heart h = hearts.get(health-1);
+//  h.animate();
+//}
 
-  // add method for cooldown timer
+// add method for cooldown timer
 }
