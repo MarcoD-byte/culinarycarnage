@@ -6,13 +6,13 @@ class Level {
   boolean dead;
 
   Level () {
-    levelEnemyCounts = new IntList(0, 2);
+    levelEnemyCounts = new IntList(0, 1, 1);
     enemyxPosition = new IntList(400, 400);
     enemyyPosition = new IntList(height/3, 2*height/3);
-    enemyType = new IntList(1, 1);
+    enemyType = new IntList(1, 2);
     currentEnemyCount = 0;
     bg = loadImage("bg.png");
-    bg.resize(800,800);
+    bg.resize(800, 800);
     dead = false;
   }
 
@@ -24,11 +24,7 @@ class Level {
     if (level ==0) {
       // Tutorial level
       enemies.clear();
-      for (int i= 0; levelEnemyCounts.get(0)>currentEnemyCount; i++) {
-        //println(i);
-        enemies.add(new Enemy(enemyxPosition.get(i), enemyyPosition.get(i), enemyType.get(i)));
-        currentEnemyCount++;
-      }
+      spawn(0);
 
       //replace background with image
       background(bg);
@@ -38,26 +34,21 @@ class Level {
       rectMode(CENTER);
       text("Move with\nWASD", width/3, 150);
       text("Use space\nto attack", 2* width/3, 500);
-     text("Enter kitchen\nhere", width-150, height/2-(height/5));
-      for (int i =0; i<4; i++){
-       triangle (width-(25*i) -125, height/2-25, width -(25*i) -125, height/2 -75, width - (25*i)-100, height/2-50); 
+      text("Enter kitchen\nhere", width-150, height/2-(height/5));
+      for (int i =0; i<4; i++) {
+        triangle (width-(25*i) -125, height/2-25, width -(25*i) -125, height/2 -75, width - (25*i)-100, height/2-50);
       }
-      
-      
       fill(150, 50);
       textSize(15);
       text("Game made by Franklin, Jonah, Marco, and Sarah", width/2, height-100);
     } else if (level ==1) {
       // First level
       background(bg);
-      for (int i= 0; levelEnemyCounts.get(1)>currentEnemyCount; i++) {
-        //println(i);
-        enemies.add(new Enemy(enemyxPosition.get(i), enemyyPosition.get(i), enemyType.get(i)));
-        currentEnemyCount++;
-      }
-      //println(enemies.size());
+      spawn(1);
     } else if (level ==2) {
-      // First level
+      // Second level
+      background(bg);
+      spawn(2);
     } else if (level ==3) {
       // First level
     } else if (level ==4) {
@@ -75,6 +66,17 @@ class Level {
     }
   }
 
+  void spawn(int level) {
+    for (int i= 0; levelEnemyCounts.get(level)>currentEnemyCount; i++) {
+      //println(i);
+      int a =0;
+      for (int k = 0; k<level; k++){
+        a += levelEnemyCounts.get(k);
+      }
+      enemies.add(new Enemy(enemyxPosition.get(a+i), enemyyPosition.get(a+i), enemyType.get(a+i)));
+      currentEnemyCount++;
+    }
+  }
 
   boolean levelComplete () {
     if (enemies.size() == 0) {
