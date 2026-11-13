@@ -1,6 +1,6 @@
 # Game Development 1: Group Project
 
-## NOTE this game requires the download of the gifAnimation library 
+###### NOTE this game requires the download of the gifAnimation library 
 [Github link to that library](https://github.com/extrapixel/gif-animation)
 
   ![Kind of the vibe we're going for](https://github.com/MarcoD-byte/culinarycarnage/blob/main/Images/zelda%20gameplay.png)
