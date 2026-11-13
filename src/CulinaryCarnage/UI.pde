@@ -1,4 +1,4 @@
-// Marco DalCanto //<>// //<>// //<>//
+// Marco DalCanto //<>// //<>//
 class UI {
   //vars
   int health, heartCount;
@@ -28,7 +28,7 @@ class UI {
     textSize(25);
     textAlign(CENTER);
     text("Health", 625, 125);
-    for (int i = 0; i<health/50; i++) {
+    for (int i = 0; i<health; i++) {
       hearts.add(new Heart(50*i+550, 50));
       heartCount++;
     }
