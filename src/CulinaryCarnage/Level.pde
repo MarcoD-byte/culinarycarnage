@@ -55,7 +55,7 @@ class Level {
         enemies.add(new Enemy(enemyxPosition.get(i), enemyyPosition.get(i), enemyType.get(i)));
         currentEnemyCount++;
       }
-      println(enemies.size());
+      //println(enemies.size());
     } else if (level ==2) {
       // First level
     } else if (level ==3) {
