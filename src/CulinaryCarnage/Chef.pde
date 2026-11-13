@@ -7,7 +7,7 @@ class Chef {
   int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim, meleeX, meleeY;
   float meleeAngle;
   PImage front, back, left, right;
-  Timer iFrames;
+  Timer playerInvFrames;
 
   Gif walkr, walkl, walkup, walkd;
 
@@ -24,15 +24,16 @@ class Chef {
     meleeX = 0;
     meleeY = 0;
     angle = 1;
-    health = 150;
+    health = 3;
     meleeDamage = 30;
     speed = 3;
     meleeCooldown = 100;
     meleeAnim = 25;
     meleeAngle = 0;
-
-    iFrames = new Timer(1000);
-
+    
+    playerInvFrames = new Timer(1000);
+    playerInvFrames.start();
+    
     front = loadImage("front-1x.png");
     back = loadImage("back-1x.png");
     left = loadImage("left-1x.png");
@@ -49,6 +50,7 @@ class Chef {
   }
 
   void display() {
+    
     imageMode(CENTER);
 
     if (angle == 1 && movingDown == true) {
@@ -89,6 +91,8 @@ class Chef {
     if (attacking == false) {
       attack.noLoop();
     }
+    textAlign(CENTER);
+    text(health,x,y);
   }
 
   // Member methods
@@ -179,11 +183,13 @@ class Chef {
     }
   }
 
+
+  
   void takeDamage(int d) {
-    if (iFrames.isFinished() == true) {
+    if (playerInvFrames.isFinished() == true) {
       health -= d;
-      println("damagetaken");
-      iFrames.start();
+      println("selfdamagetaken");
+      playerInvFrames.start();
     }
   }
 }
