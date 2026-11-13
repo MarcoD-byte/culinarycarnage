@@ -36,8 +36,8 @@ class Level {
       textSize(30);
       textAlign(CENTER);
       rectMode(CENTER);
-      text("Move with\nWASD", width/3, 100);
-      text("Use space\nto attack", 2* width/3, 100);
+      text("Move with\nWASD", width/3, 150);
+      text("Use space\nto attack", 2* width/3, 500);
      text("Enter kitchen\nhere", width-150, height/2-(height/5));
       for (int i =0; i<4; i++){
        triangle (width-(25*i) -125, height/2-25, width -(25*i) -125, height/2 -75, width - (25*i)-100, height/2-50); 
