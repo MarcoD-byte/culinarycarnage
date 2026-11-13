@@ -16,27 +16,29 @@ class Enemy {
     iFrames = new Timer(1000);
     moveCd = new Timer(800);
     attackCd = new Timer(4000);
-    attackDuration = new Timer(400);
+    attackDuration = new Timer(600);
     attackCd.start();
     isAttacking = false;
     isStartedAttackDuration = false;
     isStartedAttackCd = false;
+    iFrames.start();
     dir = 'o';
-    chargeSpeed = int(random(7,10));
+    chargeSpeed = 7;
     if (type == 1) {
       enemyImage = loadImage("carrot.png");
       speed = 2;
       size = 50;
-      health = 200;
+      health = 2;
       damage = 1;
     }
     if (type == 2) {
       enemyImage = loadImage("onion.png");
       speed = 1;
       size = 75;
-      health = 100;
+      health = 4;
       damage = 2;
     }
+    enemyImage.resize(size, size);
   }
 
   void display() {
@@ -44,8 +46,10 @@ class Enemy {
     //fill(c1);
     //ellipse(x, y, 50, 50);
     imageMode (CENTER);
-    enemyImage.resize(size, size);
+    textAlign (CENTER);
+    
     image (enemyImage, x, y);
+    text(health,x,y);
   }
 
   void move() {
@@ -73,8 +77,8 @@ class Enemy {
   void takeDamage(int d) {
     if (iFrames.isFinished() == true) {
       health -= d;
+      moveCd.start();
       println("damagetaken");
-    } else {
       iFrames.start();
     }
   }
@@ -101,6 +105,7 @@ class Enemy {
         }
         isStartedAttackDuration = true;
         isAttacking = true;
+
         isStartedAttackCd = false;
         attackDuration.start();
       }
@@ -115,20 +120,20 @@ class Enemy {
       }
     }
     if (isAttacking == true) {
-      if (dir == 'r') {
-        x += chargeSpeed;
+      if (moveCd.isFinished() == true) {
+        if (dir == 'r') {
+          x += chargeSpeed;
+        }
+        if (dir == 'l') {
+          x -= chargeSpeed;
+        }
+        if (dir == 'u') {
+          y -= chargeSpeed;
+        }
+        if (dir == 'd') {
+          y += chargeSpeed;
+        }
       }
-      if (dir == 'l') {
-        x -= chargeSpeed;
-      }
-      if (dir == 'u') {
-        y -= chargeSpeed;
-      }
-      if (dir == 'd') {
-        y += chargeSpeed;
-      }
-    }
-    if (isAttacking == false) {
     }
   }
 
@@ -139,6 +144,20 @@ class Enemy {
       moveCd.start();
       return true;
     } else {
+      return false;
+    }
+  }
+  boolean isHitPlayerMelee(Chef c) {
+    float d = dist(x, y, c.meleeX, c.meleeY) ;
+    if (d < 50) {
+      if (c.attacking == true) {
+      println("hitplayermelee");
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      
       return false;
     }
   }
