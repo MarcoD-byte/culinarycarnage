@@ -24,32 +24,36 @@ class UI {
       fill(#D82809);
       textSize(25);
       textAlign(CENTER);
-      text("Health", 625, 125);
+      text("Health", 600, 90);
 
       // display hearts
       heartCount = 0;
       hearts.clear();
       for (int i = 0; i<health; i++) {
-        hearts.add(new Heart(50*i+550, 50));
+        hearts.add(new Heart(50*i+550, 40));
         heartCount++;
       }
       for (int i = 0; hearts.size()>i; i++) {
         Heart h = hearts.get(i);
         h.display();
       }
+      fill(#E89921);
+      text("Level: "+level, 600, 130);
 
       // playerCooldown bar
       rectMode(CORNERS);
       noFill();
       stroke(3);
-      rect(685, 100, 695, 20);
+      rect(684, 100, 696, 20);
       noStroke();
-      fill(255);
       if (player.meleeCooldown>0) {
-        rect(685, 100, 695, 20+((75*player.meleeCooldown/75)));
+        fill(255/player.meleeCooldown*3.4);
+        rect(685, 100, 695, 20+((75*player.meleeCooldown)/75));
       } else {
+        fill(255);
         rect(685, 100, 695, 20);
       }
+      fill(255);
     }
   }
 
