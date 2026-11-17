@@ -27,7 +27,7 @@ class Chef {
     health = 3;
     meleeDamage = 30;
     speed = 3;
-    meleeCooldown = 100;
+    meleeCooldown = 75;
     meleeAnim = 25;
     meleeAngle = 0;
     
@@ -166,7 +166,7 @@ class Chef {
   void melee() {
     if (player.meleeCooldown < 1) {
       println("Melee");
-      meleeCooldown = 100;
+      meleeCooldown = 75;
       meleeAnim -= 1;
 
 
