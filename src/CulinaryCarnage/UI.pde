@@ -46,7 +46,7 @@ class UI {
       noStroke();
       fill(255);
       if (player.meleeCooldown>0) {
-        rect(685, 100, 695, 20+((player.meleeCooldown)));
+        rect(685, 100, 695, 20+((75*player.meleeCooldown/75)));
       } else {
         rect(685, 100, 695, 20);
       }
