@@ -54,7 +54,15 @@ void draw() {
     }
     if (e.health < 1) {
       enemies.remove(e);
-    }
+      if (e.health < 1) {
+            enemies.remove(e);
+            if (e.type == 1) {
+              ui.money ++;
+            }else if (e.type == 2){
+             ui.money+=2; 
+            } 
+          }
+      }
   }
 
  //PowerUp display & collision 
