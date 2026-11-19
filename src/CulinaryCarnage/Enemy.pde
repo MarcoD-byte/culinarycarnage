@@ -6,7 +6,7 @@ class Enemy {
   PImage enemyImage;
   boolean isAttacking, isStartedAttackDuration, isStartedAttackCd;
   char dir;
-  Timer iFrames, moveCd, attackCd, attackDuration;
+  Timer iFrames, moveCd, attackCd, attackDuration, staggerAttack;
   //Types define the type of enemy, 1 = carrot, 2 = onion
 
   Enemy(int x, int y, int type) {
@@ -34,7 +34,9 @@ class Enemy {
     moveCd = new Timer(800);
     attackCd = new Timer(4000);
     attackDuration = new Timer(attackDurationTime);
-    attackCd.start();
+    
+    staggerAttack = new Timer(int(random(8000)));
+    staggerAttack.start();
     isAttacking = false;
     isStartedAttackDuration = false;
     isStartedAttackCd = false;
@@ -87,74 +89,77 @@ class Enemy {
   }
 
   void attack() {
+    //staggers the initial attack so enemies aren't synced
+    if (staggerAttack.isFinished() == true) {
     //attack cooldown is finished, attack starts
-    if (attackCd.isFinished() == true) {
-      //triggers once when attack starts
-      if (isStartedAttackDuration == false) {
-        int dx = (abs(player.x - x));
-        int dy = (abs(player.y - y));
-
-        if (dx > dy) {
-          if (x<player.x) {
-            dir = 'r';
+      if (attackCd.isFinished() == true) {
+        //triggers once when attack starts
+        if (isStartedAttackDuration == false) {
+          int dx = (abs(player.x - x));
+          int dy = (abs(player.y - y));
+  
+          if (dx > dy) {
+            if (x<player.x) {
+              dir = 'r';
+            } else {
+              dir = 'l';
+            }
           } else {
-            dir = 'l';
+            if (y<player.y) {
+              dir = 'd';
+            } else {
+              dir = 'u';
+            }
           }
-        } else {
-          if (y<player.y) {
-            dir = 'd';
-          } else {
-            dir = 'u';
-          }
-        }
-        isStartedAttackDuration = true;
-        isAttacking = true;
-
-        isStartedAttackCd = false;
-        attackDuration.start();
-      }
-    }
-    
-    //attack duration is finished, attack cooldown starts and attack ends
-    if (attackDuration.isFinished() == true) {
-      //triggers once when attack duration is finished
-      if (isStartedAttackCd == false) {
-        isAttacking = false;
-        isStartedAttackCd = true;
-        isStartedAttackDuration = false;
-        //onion speed reverts back to normal
-        if (type == 2){
-          speed = 1;
-        }
-        //color change back to normal
-        c1 = 255;
-        attackCd.start();
-      }
-    }
-    if (isAttacking == true) {
-      //color change for attack
-      c1 = 150;
-      //carrot dash attack      
-      if (type == 1) {
-        if (moveCd.isFinished() == true) {
-          if (dir == 'r') {
-            x += chargeSpeed;
-          }
-          if (dir == 'l') {
-            x -= chargeSpeed;
-          }
-          if (dir == 'u') {
-            y -= chargeSpeed;
-          }
-          if (dir == 'd') {
-            y += chargeSpeed;
-          }
+          isStartedAttackDuration = true;
+          isAttacking = true;
+  
+          isStartedAttackCd = false;
+          attackDuration.start();
         }
       }
-      //onion speedup attack
       
-      if (type == 2) {
-        speed = 4;
+      //attack duration is finished, attack cooldown starts and attack ends
+      if (attackDuration.isFinished() == true) {
+        //triggers once when attack duration is finished
+        if (isStartedAttackCd == false) {
+          isAttacking = false;
+          isStartedAttackCd = true;
+          isStartedAttackDuration = false;
+          //onion speed reverts back to normal
+          if (type == 2){
+            speed = 1;
+          }
+          //color change back to normal
+          c1 = 255;
+          attackCd.start();
+        }
+      }
+      if (isAttacking == true) {
+        //color change for attack
+        c1 = 150;
+        //carrot dash attack      
+        if (type == 1) {
+          if (moveCd.isFinished() == true) {
+            if (dir == 'r') {
+              x += chargeSpeed;
+            }
+            if (dir == 'l') {
+              x -= chargeSpeed;
+            }
+            if (dir == 'u') {
+              y -= chargeSpeed;
+            }
+            if (dir == 'd') {
+              y += chargeSpeed;
+            }
+          }
+        }
+        //onion speedup attack
+        
+        if (type == 2) {
+          speed = 4;
+        }
       }
     }
   }
@@ -171,7 +176,7 @@ class Enemy {
   }
   boolean isHitPlayerMelee(Chef c) {
     float d = dist(x, y, c.meleeX, c.meleeY) ;
-    if (d < 50) {
+    if (d < 25+(size/2)) {
       if (c.attacking == true) {
       println("hitplayermelee");
         return true;
