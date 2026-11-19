@@ -1,6 +1,6 @@
 // Jonah Gong
 class Enemy {
-  int x, y, size, health, damage, type, chargeSpeed;
+  int x, y, size, health, damage, type, chargeSpeed, attackDurationTime;
   float speed;
   color c1;
   PImage enemyImage;
@@ -10,26 +10,14 @@ class Enemy {
   //Types define the type of enemy, 1 = carrot, 2 = onion
 
   Enemy(int x, int y, int type) {
-    this.x = x;
-    this.y = y;
-    this.type = type;
-    iFrames = new Timer(1000);
-    moveCd = new Timer(800);
-    attackCd = new Timer(4000);
-    attackDuration = new Timer(600);
-    attackCd.start();
-    isAttacking = false;
-    isStartedAttackDuration = false;
-    isStartedAttackCd = false;
-    iFrames.start();
-    dir = 'o';
-    chargeSpeed = 7;
+    this.c1 = 255;
     if (type == 1) {
       enemyImage = loadImage("carrot.png");
       speed = 2;
       size = 50;
       health = 2;
       damage = 1;
+      attackDurationTime = 600;
     }
     if (type == 2) {
       enemyImage = loadImage("onion.png");
@@ -37,7 +25,22 @@ class Enemy {
       size = 75;
       health = 4;
       damage = 2;
+      attackDurationTime = 1500;
     }
+    this.x = x;
+    this.y = y;
+    this.type = type;
+    iFrames = new Timer(1000);
+    moveCd = new Timer(800);
+    attackCd = new Timer(4000);
+    attackDuration = new Timer(attackDurationTime);
+    attackCd.start();
+    isAttacking = false;
+    isStartedAttackDuration = false;
+    isStartedAttackCd = false;
+    iFrames.start();
+    dir = 'o';
+    chargeSpeed = 7;
     enemyImage.resize(size, size);
   }
 
@@ -47,15 +50,15 @@ class Enemy {
     //ellipse(x, y, 50, 50);
     imageMode (CENTER);
     textAlign (CENTER);
-    
+    tint(255,c1,c1);
     image (enemyImage, x, y);
-    text(health,x,y);
+    noTint();
   }
 
   void move() {
     int dx = (abs(player.x - x));
     int dy = (abs(player.y - y));
-    if (isAttacking == false) {
+    if (isAttacking == false | type == 2) {
       if (moveCd.isFinished() == true) {
         if (dx > dy) {
           if (x<player.x) {
@@ -84,8 +87,9 @@ class Enemy {
   }
 
   void attack() {
-
+    //attack cooldown is finished, attack starts
     if (attackCd.isFinished() == true) {
+      //triggers once when attack starts
       if (isStartedAttackDuration == false) {
         int dx = (abs(player.x - x));
         int dy = (abs(player.y - y));
@@ -110,29 +114,47 @@ class Enemy {
         attackDuration.start();
       }
     }
+    
+    //attack duration is finished, attack cooldown starts and attack ends
     if (attackDuration.isFinished() == true) {
-
+      //triggers once when attack duration is finished
       if (isStartedAttackCd == false) {
         isAttacking = false;
         isStartedAttackCd = true;
         isStartedAttackDuration = false;
+        //onion speed reverts back to normal
+        if (type == 2){
+          speed = 1;
+        }
+        //color change back to normal
+        c1 = 255;
         attackCd.start();
       }
     }
     if (isAttacking == true) {
-      if (moveCd.isFinished() == true) {
-        if (dir == 'r') {
-          x += chargeSpeed;
+      //color change for attack
+      c1 = 150;
+      //carrot dash attack      
+      if (type == 1) {
+        if (moveCd.isFinished() == true) {
+          if (dir == 'r') {
+            x += chargeSpeed;
+          }
+          if (dir == 'l') {
+            x -= chargeSpeed;
+          }
+          if (dir == 'u') {
+            y -= chargeSpeed;
+          }
+          if (dir == 'd') {
+            y += chargeSpeed;
+          }
         }
-        if (dir == 'l') {
-          x -= chargeSpeed;
-        }
-        if (dir == 'u') {
-          y -= chargeSpeed;
-        }
-        if (dir == 'd') {
-          y += chargeSpeed;
-        }
+      }
+      //onion speedup attack
+      
+      if (type == 2) {
+        speed = 4;
       }
     }
   }
