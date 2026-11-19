@@ -76,6 +76,7 @@ void draw() {
     if (l1.levelComplete() && player.atREdge()) {
     l1.currentEnemyCount=0;
     player.relocate(25, 3*height/4);
+    enemies.clear();
     if(l1.dead){
       level=1;
       l1.dead = false;
@@ -83,6 +84,7 @@ void draw() {
       level++;
     }
   }else if(player.atLEdge()){
+   enemies.clear();
    l1.currentEnemyCount=0;
    level--;
    player.relocate(width-100, height/4);
