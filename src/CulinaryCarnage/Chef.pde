@@ -4,7 +4,7 @@ class Chef {
   // member variables
   PApplet parent;
 
-  int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim, meleeX, meleeY;
+  int x, y, angle, health, meleeDamage, speed, meleeCooldown, meleeAnim, meleeX, meleeY, dashCooldown;
   float meleeAngle;
   PImage front, back, left, right;
   Timer playerInvFrames;
@@ -30,10 +30,11 @@ class Chef {
     meleeCooldown = 75;
     meleeAnim = 25;
     meleeAngle = 0;
-    
+    dashCooldown = 200;
+
     playerInvFrames = new Timer(1000);
     playerInvFrames.start();
-    
+
     front = loadImage("front-1x.png");
     back = loadImage("back-1x.png");
     left = loadImage("left-1x.png");
@@ -50,7 +51,7 @@ class Chef {
   }
 
   void display() {
-    
+
     imageMode(CENTER);
 
     if (angle == 1 && movingDown == true) {
@@ -92,7 +93,7 @@ class Chef {
       attack.noLoop();
     }
     textAlign(CENTER);
-    text(health,x,y);
+    text(health, x, y);
   }
 
   // Member methods
@@ -121,6 +122,26 @@ class Chef {
       meleeAngle = HALF_PI;
       meleeX = x + 28;
       meleeY = y;
+    }
+    if (movingUp && movingRight == true) {
+      meleeAngle = HALF_PI/2;
+      meleeX = x + 28;
+      meleeY = y - 28;
+    }
+    if (movingUp && movingLeft == true) {
+      meleeAngle = -HALF_PI/2;
+      meleeX = x - 28;
+      meleeY = y - 28;
+    }
+    if (movingDown && movingRight == true) {
+      meleeAngle = 10200;
+      meleeX = x + 28;
+      meleeY = y + 28;
+    }
+    if (movingDown && movingLeft == true) {
+      meleeAngle = -10200;
+      meleeX = x - 28;
+      meleeY = y + 28;
     }
 
 
@@ -174,7 +195,7 @@ class Chef {
         attack.stop();
         meleeAnim = 25;
       }
-      meleeCooldown = 100;
+      meleeCooldown = 75;
     } else {
       println("Cooldown: " + player.meleeCooldown);
     }
@@ -183,13 +204,27 @@ class Chef {
     }
   }
 
-
-  
   void takeDamage(int d) {
     if (playerInvFrames.isFinished() == true) {
       health -= d;
       println("selfdamagetaken");
       playerInvFrames.start();
+    }
+  }
+
+  void dash() {
+    speed = 6;
+    if (dashCooldown < 1) {
+      dashCooldown -= 1;
+      if (angle == 1) {
+        y = y + speed;
+      } else if (angle == 2) {
+        y = y - speed;
+      } else if (angle == 3) {
+        x = x - speed;
+      } else if (angle == 4) {
+        x = x + speed;
+      }
     }
   }
 }
